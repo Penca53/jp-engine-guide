@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(sfml-engine-4)
+project(jp-engine-4)
 
 add_subdirectory(engine)
 add_subdirectory(game)

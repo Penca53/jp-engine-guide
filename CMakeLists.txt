@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(sfml-engine-guide)
+project(jp-engine-guide)
 
 add_subdirectory(chapter-0)
 add_subdirectory(chapter-1)
