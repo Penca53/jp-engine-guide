@@ -112,11 +112,17 @@ void Tilemap::SetTile(sf::Vector2u position, TileID tile_id) {
 }
 
 bool Tilemap::IsWithinWorldBounds(sf::Vector2f world_position) const {
-  if (world_position.x < 0 || world_position.y < 0) {
+  sf::Vector2f tilemap_relative_position =
+      (world_position - GetGlobalTransform().getPosition());
+
+  if (tilemap_relative_position.x < 0 || tilemap_relative_position.y < 0) {
     return false;
   }
 
-  return IsWithinBounds(WorldToTileSpace(world_position));
+  sf::Vector2u tile_position(tilemap_relative_position.componentWiseDiv(
+      sf::Vector2f(tileset_.GetTileSize())));
+
+  return IsWithinBounds(tile_position);
 }
 
 const Tile& Tilemap::GetWorldTile(sf::Vector2f world_position) const {
