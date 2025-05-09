@@ -64,14 +64,11 @@ bool CircleCollider::Collides(const RectangleCollider& other) const {
 
 #ifndef NDEBUG
 void CircleCollider::Draw(sf::RenderTarget& target) {
-  sf::CircleShape shape(radius_ * std::max(GetGlobalTransform().getScale().x,
-                                           GetGlobalTransform().getScale().y));
+  sf::CircleShape shape(radius_);
   shape.setOutlineColor(sf::Color(0, 255, 0, 150));
   shape.setOutlineThickness(2);
   shape.setFillColor(sf::Color::Transparent);
-  shape.setOrigin(sf::Vector2f{radius_, radius_} *
-                  std::max(GetGlobalTransform().getScale().x,
-                           GetGlobalTransform().getScale().y));
+  shape.setOrigin(sf::Vector2f(radius_, radius_));
   target.draw(shape, GetGlobalTransform().getTransform());
 }
 #endif

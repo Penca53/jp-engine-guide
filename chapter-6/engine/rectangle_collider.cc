@@ -51,13 +51,11 @@ bool RectangleCollider::Collides(const RectangleCollider& other) const {
 
 #ifndef NDEBUG
 void RectangleCollider::Draw(sf::RenderTarget& target) {
-  sf::RectangleShape shape(
-      size_.componentWiseMul(GetGlobalTransform().getScale()));
+  sf::RectangleShape shape(size_);
   shape.setOutlineColor(sf::Color(0, 255, 0, 150));
   shape.setOutlineThickness(2);
   shape.setFillColor(sf::Color::Transparent);
-  shape.setOrigin(size_.componentWiseMul(GetGlobalTransform().getScale()) /
-                  2.F);
+  shape.setOrigin(size_ / 2.F);
   target.draw(shape, GetGlobalTransform().getTransform());
 }
 #endif
